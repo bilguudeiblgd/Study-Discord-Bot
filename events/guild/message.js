@@ -5,6 +5,7 @@ const prefix = config.prefix;
 
 module.exports = async(client, Discord, message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
+
     try {
         const user = await Users.create({
             id: message.author.id,
@@ -14,6 +15,7 @@ module.exports = async(client, Discord, message) => {
             endtime: new Date(),
             studytime: 0,
             weeklytime: 0,
+
         });
 
     } catch (e) {

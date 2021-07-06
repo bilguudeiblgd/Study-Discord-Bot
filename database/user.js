@@ -24,6 +24,7 @@ const Users = sequelize.define('users', {
     },
     studytime: Sequelize.INTEGER,
     weeklytime: Sequelize.INTEGER,
+
 });
 
 module.exports = Users;

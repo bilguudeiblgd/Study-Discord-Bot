@@ -36,5 +36,5 @@ client.on("voiceStateUpdate", async(oldVoiceState, newVoiceState) => { // Listei
 });
 
 
-
-client.login(process.env.DISCORD_TOKEN);
+// process.env.DISCORD_TOKEN
+client.login(process.env.DISCORD_DEV_TOKEN);
