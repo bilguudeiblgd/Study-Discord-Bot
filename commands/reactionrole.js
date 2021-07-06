@@ -1,8 +1,8 @@
 module.exports = {
     name: 'reactionrole',
     description: "Sets up a reaction role message!",
-    async execute(message, args, Discord, client) {
-        const channel = '847490551074914386';
+    async execute(message, args, Users, Discord, client) {
+        const channel = '847490551074914385';
 
         const mathRole = message.guild.roles.cache.find(role => role.name === "mathematics");
         const spaceRole = message.guild.roles.cache.find(role => role.name === "cosmology");
@@ -63,15 +63,15 @@ module.exports = {
 
         ]).catch(error => console.error('One of the emojis failed to react: ', error));
 
-        client.on('messageReactionAdd', async (reaction, user) => {
+        client.on('messageReactionAdd', async(reaction, user) => {
             if (reaction.message.partial) await reaction.message.fetch();
             if (reaction.partial) await reaction.fetch();
             if (user.bot) return;
             // if (!reaction.member.guild) return;
-            
-            if (reaction.message.channel.id == channel || reaction.message.channel.id == '847532586137026571') {
-                console.log("hey im gonna go ahead and do roles");
-                switch(reaction.emoji.name){
+
+            if (reaction.message.channel.id == channel || reaction.message.channel.id == '847490551074914385' || reaction.message.channel.id == '847532586137026571') {
+
+                switch (reaction.emoji.name) {
                     case mathEmoji:
                         await reaction.message.guild.members.cache.get(user.id).roles.add(mathRole).catch(e => console.error('Failed to add role: ', e));
                         break;
@@ -108,20 +108,20 @@ module.exports = {
                     case physicsEmoji:
                         await reaction.message.guild.members.cache.get(user.id).roles.add(physicsRole);
                         break;
-                    
+
                 }
-                
+
             }
         });
-        client.on('messageReactionRemove', async (reaction, user) => {
+        client.on('messageReactionRemove', async(reaction, user) => {
             if (reaction.message.partial) await reaction.message.fetch();
             if (reaction.partial) await reaction.fetch();
             if (user.bot) return;
             // if (!reaction.member.guild) return;
-            
-            if (reaction.message.channel.id == channel || reaction.message.channel.id == '847532586137026571') {
-   
-                switch(reaction.emoji.name){
+
+            if (reaction.message.channel.id == channel || reaction.message.channel.id == '847490551074914385' || reaction.message.channel.id == '847532586137026571') {
+
+                switch (reaction.emoji.name) {
                     case mathEmoji:
                         await reaction.message.guild.members.cache.get(user.id).roles.remove(mathRole).catch(e => console.error('Failed to add role: ', e));
                         break;
@@ -158,9 +158,9 @@ module.exports = {
                     case physicsEmoji:
                         await reaction.message.guild.members.cache.get(user.id).roles.remove(physicsRole);
                         break;
-                    
+
                 }
-                
+
             }
         });
     }

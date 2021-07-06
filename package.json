@@ -1,15 +1,22 @@
 {
-  "name": "study-bot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "bilguudei",
-  "license": "ISC",
-  "dependencies": {
-    "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0"
-  }
+    "name": "study-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start": "node main.js",
+        "dev": "nodemon index"
+    },
+    "author": "bilguudei",
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^12.5.3",
+        "dotenv": "^10.0.0",
+        "fs": "0.0.1-security",
+        "sequelize": "^6.6.2",
+        "sqlite3": "^5.0.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    }
 }
