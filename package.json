@@ -5,12 +5,12 @@
     "main": "main.js",
     "scripts": {
         "start": "node main.js",
-        "dev": "nodemon index"
+        "dev": "nodemon main.js"
     },
     "author": "bilguudei",
     "license": "ISC",
     "dependencies": {
-        "discord.js": "^12.5.3",
+        "discord.js": "^14.4.0",
         "dotenv": "^10.0.0",
         "fs": "0.0.1-security",
         "sequelize": "^6.6.2",

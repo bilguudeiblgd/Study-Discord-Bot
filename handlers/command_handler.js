@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 module.exports = (client, Discord, Users) => {
-
     const command_files = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
     const weekly_files = fs.readdirSync('./commands/weekly/').filter(file => file.endsWith('.js'));
     command_files.forEach(file => {

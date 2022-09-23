@@ -1,9 +1,10 @@
+const config = require('../../config.json');
 module.exports = {
     name: 'voiceend',
     description: 'ends studies when',
     async execute(oldVoiceState, user, Discord, client) {
 
-        const tochannel = client.channels.cache.get('847532948874068038');
+        const tochannel = client.channels.cache.get(config.channel);
 
         let userID = oldVoiceState.member.id;
         if (!user.studystarted) return tochannel.send(`<@${userID}> how are you going to end it if you haven't started?`);
@@ -27,15 +28,14 @@ module.exports = {
         weekly += diffTime;
 
         await user.update({ weeklytime: weekly });
-
-        const endEmbed = new Discord.MessageEmbed()
+        
+        const endEmbed = new Discord.EmbedBuilder()
             .setColor('#67ebad')
-            .setTitle('Study has Ended!')
-            .setDescription(`<@${userID}>\` have studied for \n\n hours: ${parseInt(diffTime / 3600)} \n\n minutes: ${parseInt((diffTime %3600) / 60)} \n\n seconds: ${parseInt(((diffTime%3600)% 60))} \``)
-            .setFooter(`Total studied: ${parseInt(total / 3600)} hours`);
+            .setTitle('Work has Ended!')
+            .setDescription(`<@${userID}>\` have worked for \n\n hours: ${parseInt(diffTime / 3600)} \n\n minutes: ${parseInt((diffTime %3600) / 60)} \n\n seconds: ${parseInt(((diffTime%3600)% 60))} \``)
+            .setFooter({text: `Total worked: ${parseInt(total / 3600)} hours`});
 
 
-
-        await tochannel.send(endEmbed);
+        await tochannel.send({embeds: [endEmbed]});
     }
 }

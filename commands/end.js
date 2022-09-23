@@ -5,6 +5,7 @@ module.exports = {
     name: 'end',
     description: 'ends studies',
     async execute(message, Users, Discord, client) {
+        return;
         const user = await Users.findOne({ where: { id: message.author.id } });
 
         if (!user.studystarted) return message.channel.send(`<@${message.member.id}> how are you going to end it if you haven't started?`);

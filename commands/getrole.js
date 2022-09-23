@@ -2,7 +2,7 @@ module.exports = {
     name: 'getrole',
     async execute(message, Users, Discord, client) {
         const user = await Users.findOne({ where: { id: message.author.id } });
-        const logChannel = "856822456275042324";
+        const logChannel = "1022812262265798656";
 
         let studytime = parseInt((user.studytime) / 3600);
         let prevRole = '';

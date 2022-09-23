@@ -9,14 +9,14 @@ module.exports = {
                 ['studytime', 'DESC'],
             ]
         });
-
-        const leaderEmbed = new Discord.MessageEmbed()
+        console.log(topUsers)
+        const leaderEmbed = new Discord.EmbedBuilder()
             .setColor('#8520E3')
             .setTitle('Total Studytime Leaderboard')
-            .setDescription(` 1: **${topUsers[0].username}** -> ${parseInt(topUsers[0].studytime / 3600)} hours\n\n 2: **${topUsers[1].username}** -> ${parseInt(topUsers[1].studytime / 3600)} hours\n\n 3: **${topUsers[2].username}** -> ${parseInt(topUsers[2].studytime / 3600)} hours\n\n
+            .setDescription(` 1: **${topUsers[0].username}** -> ${parseInt(topUsers[0].studytime / 3600)} hours\n\n 2: **${topUsers[1]?.username}** -> ${parseInt(topUsers[1]?.studytime / 3600)} hours\n\n 3: **${topUsers[2]?.username}** -> ${parseInt(topUsers[2]?.studytime / 3600)} hours\n\n
             `)
-            .setFooter(`TOTAL STUDYTIME`);
-        await message.channel.send(leaderEmbed);
+            .setFooter({text: `TOTAL STUDYTIME`});
+        await message.channel.send({embeds: [leaderEmbed]});
 
     }
 }

@@ -3,9 +3,8 @@ const Users = require('../../database/user');
 
 const prefix = config.prefix;
 
-module.exports = async(client, Discord, message) => {
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
-
+module.exports = async (client, Discord, message) => {
+    if (!message.content.startsWith(prefix) || message.channelId != config.channel) return;
     try {
         const user = await Users.create({
             id: message.author.id,
@@ -26,12 +25,16 @@ module.exports = async(client, Discord, message) => {
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-
+    console.log(args);
     if (command === "study" || command === "stud" || command === "stu" || command === "st" || command === "s") {
         try {
             if (args[0] === "weekly") {
                 client.weeklyCommands.get(args[1]).execute(message, Users, Discord, client);
                 return;
+            }
+            if (!client.commands.get(args[0])) {
+                await message.channel.send(`Invalid commands.`);
+                return
             }
             client.commands.get(args[0]).execute(message, Users, Discord, client);
         } catch (err) {
