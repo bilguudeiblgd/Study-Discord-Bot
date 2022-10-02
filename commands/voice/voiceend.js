@@ -31,9 +31,9 @@ module.exports = {
         
         const endEmbed = new Discord.EmbedBuilder()
             .setColor('#67ebad')
-            .setTitle('Work has Ended!')
-            .setDescription(`<@${userID}>\` have worked for \n\n hours: ${parseInt(diffTime / 3600)} \n\n minutes: ${parseInt((diffTime %3600) / 60)} \n\n seconds: ${parseInt(((diffTime%3600)% 60))} \``)
-            .setFooter({text: `Total worked: ${parseInt(total / 3600)} hours`});
+            .setTitle('Study has Ended!')
+            .setDescription(`<@${userID}>\` have studied for \n\n hours: ${parseInt(diffTime / 3600)} \n\n minutes: ${parseInt((diffTime %3600) / 60)} \n\n seconds: ${parseInt(((diffTime%3600)% 60))} \``)
+            .setFooter({text: `Total studied: ${parseInt(total / 3600)} hours`});
 
 
         await tochannel.send({embeds: [endEmbed]});
