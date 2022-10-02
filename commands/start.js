@@ -4,7 +4,7 @@ module.exports = {
     description: 'starts off studies',
     async execute(message, Users, Discord, client) {
         if(message.channel.id = config.channel){
-            return message.channel.send("Stream хийж цаг аа эхлүүлээрэй :smiling_face_with_3_hearts: ");
+            return message.channel.send("You have to stream first!");
         }
         
         const user = await Users.findOne({ where: { id: message.author.id } });
